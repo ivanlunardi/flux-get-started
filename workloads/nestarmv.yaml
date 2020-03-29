@@ -29,8 +29,8 @@ spec:
           containerPort: 3000
           protocol: TCP
         command:
-        - npm
-        - start
+        - node
+        - dist/main.js
         env:
         - name: PODINFO_UI_COLOR
           value: "#34577c"
