@@ -19,6 +19,9 @@ spec:
     matchLabels:
       app: nestarmv7
   template:
+    metadata:
+      labels:
+        app: nestarmv7
     spec:
       containers:
       - name: nestarmv7
