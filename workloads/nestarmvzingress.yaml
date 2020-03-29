@@ -1,15 +1,16 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: ingress-nestarmv7
+  name: nestarmv7
   namespace: demo
-  annotations:
-      ingress.kubernetes.io/rewrite-target: /
+  labels:
+    app: nestarmv7
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /*
-        backend:
-          serviceName: nestarmv7
-          servicePort: 3000
+  type: ClusterIP
+  selector:
+    app: nestarmv7
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: http
