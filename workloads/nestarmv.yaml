@@ -1,0 +1,43 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestarmv7
+  namespace: demo
+  labels:
+    app: podinfo
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.init: regex:^1.1.*
+    fluxcd.io/tag.podinfod: semver:~1.1
+spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: nestarmv7
+  template:
+    spec:
+      containers:
+      - name: nestarmv7
+        image: 192.168.1.115:5000/coazze/testnest:1.1.
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP
+        command:
+        - npm
+        - start
+        env:
+        - name: PODINFO_UI_COLOR
+          value: "#34577c"
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 128Mi
+          requests:
+            cpu: 10m
+            memory: 64Mi
