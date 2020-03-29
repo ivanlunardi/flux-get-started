@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nestTest
+  name: nest-test
   namespace: demo
 spec:
   containers:
-  - name: dnsutils
-    image: 192.168.1.115/coazze/test-nest:1585474248
+  - name: nest-test
+    image: 192.168.1.115:5000/coazze/test-nest:1585474788
     command:
       - npm
       - start
