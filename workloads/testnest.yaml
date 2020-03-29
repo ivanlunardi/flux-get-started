@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
   - name: nest-test
-    image: 192.168.1.115:5000/coazze/test-nest:latest
+    image: 192.168.1.115:5000/coazze/testnest:latest
     command:
       - npm
       - start
