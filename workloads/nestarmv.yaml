@@ -5,7 +5,7 @@ metadata:
   name: nestarmv7
   namespace: demo
   labels:
-    app: podinfo
+    app: nestarmv7
 
 spec:
   strategy:
